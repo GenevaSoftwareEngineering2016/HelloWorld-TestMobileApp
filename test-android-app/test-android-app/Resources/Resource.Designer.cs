@@ -60,14 +60,14 @@ namespace test_android_app
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
-			
 			// aapt resource value: 0x7f050002
-			public const int editText1 = 2131034114;
+			public const int ClickCountReset = 2131034114;
+			
+			// aapt resource value: 0x7f050000
+			public const int ClickIncrementer = 2131034112;
 			
 			// aapt resource value: 0x7f050001
-			public const int linearLayout1 = 2131034113;
+			public const int MegaClickButton = 2131034113;
 			
 			static Id()
 			{

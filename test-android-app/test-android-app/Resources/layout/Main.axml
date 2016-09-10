@@ -4,18 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/MyButton"
+        android:id="@+id/ClickIncrementer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Hello" />
-    <LinearLayout
-        android:orientation="horizontal"
+        android:text="@string/Hello"
+        android:clickable="true"
+        android:editable="false"
+        android:enabled="true" />
+    <Button
+        android:text="MEGA CLICK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1">
-        <EditText
-            android:layout_width="379.5dp"
-            android:layout_height="match_parent"
-            android:id="@+id/editText1" />
-    </LinearLayout>
+        android:id="@+id/MegaClickButton"
+        android:clickable="true"
+        android:editable="false"
+        android:enabled="true" />
+    <Button
+        android:text="Reset Click Count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ClickCountReset"
+        android:enabled="true"
+        android:editable="false"
+        android:clickable="true" />
 </LinearLayout>
