@@ -4,7 +4,7 @@
   <uses-sdk android:minSdkVersion="16" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <application android:label="HelloWorld-TestMobileApp" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:label="HelloWorld-TestMobileApp" android:icon="@drawable/icon" android:debuggable="true" android:name="android.app.Application" android:allowBackup="true">
     <activity android:icon="@drawable/icon" android:label="HelloWorld-TestMobileApp" android:name="md590a7519f437b4588e21ebde539ce8597.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

@@ -1,2 +1,0 @@
-android.app.Application
-test_android_app.test_android_app
