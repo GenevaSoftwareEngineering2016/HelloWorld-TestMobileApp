@@ -69,6 +69,18 @@ namespace test_android_app
 			// aapt resource value: 0x7f050001
 			public const int MegaClickButton = 2131034113;
 			
+			// aapt resource value: 0x7f050003
+			public const int checkBoxEnableEmail = 2131034115;
+			
+			// aapt resource value: 0x7f050005
+			public const int editEmail = 2131034117;
+			
+			// aapt resource value: 0x7f050004
+			public const int emailText = 2131034116;
+			
+			// aapt resource value: 0x7f050006
+			public const int sendEmailButton = 2131034118;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

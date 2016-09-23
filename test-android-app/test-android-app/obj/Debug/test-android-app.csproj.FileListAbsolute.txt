@@ -10,6 +10,5 @@ C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-andro
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\res\drawable\icon.png
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\R.cs.flag
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\uploadflags.txt
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\test-android-app.csprojResolveAssemblyReference.cache
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\test-android-app.dll.mdb
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\bin\Debug\test-android-app.dll.mdb
