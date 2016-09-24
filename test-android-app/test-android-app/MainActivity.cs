@@ -1,10 +1,12 @@
 ﻿// CSC 483 - HelloWorld-TestMobileApp
 
 using System;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
+using System.Collections.Generic;
 
 namespace test_android_app
 {
@@ -12,6 +14,8 @@ namespace test_android_app
     public class MainActivity : Activity
     {
         public int ClickCount { get; set; } = 0;
+        public string EmailAddress { get; set; }
+        public string EmailText { get; set; }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -27,8 +31,8 @@ namespace test_android_app
             Button clickResetButton = FindViewById<Button>(Resource.Id.ClickCountReset);
             Button sendEmailButton = FindViewById<Button>(Resource.Id.sendEmailButton);
             CheckBox enableEmailCheckBox = FindViewById<CheckBox>(Resource.Id.checkBoxEnableEmail);
+            EditText enterEmailAddressButton = FindViewById<EditText>(Resource.Id.editEmail);
             EditText enterEmailTextButton = FindViewById<EditText>(Resource.Id.emailText);
-            EditText enterEmailButton = FindViewById<EditText>(Resource.Id.editEmail);
 
             EnableDisableResetButton(clickResetButton, ClickCount);
 
@@ -41,11 +45,11 @@ namespace test_android_app
 
             megaClickButton.Click += delegate
             {
-                ClickCount += 5;
+                ClickCount *= 5;
                 clickIncrementerButton.Text = string.Format("{0} clicks!", ClickCount);
                 EnableDisableResetButton(clickResetButton, ClickCount);
 
-                // Can only use the +5 "Mega Click" once (before reset).
+                // Can only use the x5 "Mega Click" once (before reset).
                 megaClickButton.Enabled = false;
             };
 
@@ -63,31 +67,42 @@ namespace test_android_app
             {
                 if (enableEmailCheckBox.Checked)
                 {
+                    enterEmailAddressButton.Enabled = true;
                     enterEmailTextButton.Enabled = true;
-                    enterEmailButton.Enabled = true;
                     sendEmailButton.Enabled = true;
                 }
                 else
                 {
+                    enterEmailAddressButton.Enabled = false;
                     enterEmailTextButton.Enabled = false;
-                    enterEmailButton.Enabled = false;
                     sendEmailButton.Enabled = false;
                 }
             };
 
+            enterEmailAddressButton.TextChanged += delegate
+            {
+                EmailAddress = enterEmailAddressButton.Text;
+            };
+
+            enterEmailTextButton.TextChanged += delegate
+            {
+                EmailText = enterEmailTextButton.Text;
+            };
+
             sendEmailButton.Click += delegate
             {
-                var email = new Intent(Intent.ActionSend);
-
-                email.PutExtra(Intent.ExtraEmail, new string[] {"adcaldwe@geneva.edu"});    // Working 09/23/2016
-                email.PutExtra(Intent.ExtraCc, enterEmailButton.Text);                  // Not Working 09/23/2016
-                email.PutExtra(Intent.ExtraSubject, "Hello World Email");   // Working 09/23/2016
-                email.PutExtra(Intent.ExtraText, new string[]                // Not Working 09/23/2016
+                List<string> emailBody = new List<string>
                 {
                     "Hello from Xamarin.Android!\n",
                     "Number of clicks = " + ClickCount + "\n",
-                    enterEmailTextButton.Text
-                });
+                    EmailText
+                };
+
+                var email = new Intent(Intent.ActionSend);
+
+                email.PutExtra(Intent.ExtraEmail, new string[] {EmailAddress}); // Working 09/24/2016
+                email.PutExtra(Intent.ExtraSubject, "Hello World Email");       // Working 09/24/2016
+                email.PutStringArrayListExtra(Intent.ExtraText, emailBody);     // NOT Working 09/24/2016
 
                 email.SetType("message/rfc822");
 
