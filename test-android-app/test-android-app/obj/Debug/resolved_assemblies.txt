@@ -17,6 +17,6 @@ C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-andro
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.Runtime.InteropServices.dll
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.Runtime.Extensions.dll
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.Reflection.Extensions.dll
+C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.Net.Http.dll
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.Runtime.Serialization.dll
 C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.ServiceModel.Internals.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Debug\android\assets\System.Net.Http.dll
