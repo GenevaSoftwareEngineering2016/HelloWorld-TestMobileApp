@@ -99,8 +99,6 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "test-android-app.dll" comes first in this list. */
 		"test-android-app.dll",
-		"Java.Interop.dll",
-		"System.ServiceModel.Internals.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};
