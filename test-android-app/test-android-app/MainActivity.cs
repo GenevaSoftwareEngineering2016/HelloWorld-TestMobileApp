@@ -1,11 +1,13 @@
 ﻿// CSC 483 - HelloWorld-TestMobileApp
 // With help (code) from: Sven-Michael Stübe @ http://stackoverflow.com/questions/39678310/add-email-body-text-and-send-email-from-xamarin-android-app/39681516#39681516
 using System;
+using System.Net.Mail;
 using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
 using System.Text;
+using Java.Interop;
 
 namespace test_android_app
 {
@@ -111,6 +113,7 @@ namespace test_android_app
 
         private void SendEmailButtonOnClick(object sender, EventArgs eventArgs)
         {
+            // Following Code Adapted From Morten Godrim Jensen @ http://stackoverflow.com/questions/30255789/how-to-send-a-mail-in-xamarin-using-system-net-mail-smtpclient
             // Build the Body of the Email
             var emailBody = new StringBuilder();
             emailBody.AppendLine("Hello from Xamarin.Android!");
@@ -118,23 +121,33 @@ namespace test_android_app
             emailBody.AppendLine();
             emailBody.Append(_enterEmailTextButton.Text);
 
-            // Build the Email Intent
-            var email = new Intent(Intent.ActionSend);
+            // Set Credentials
+            string username = "------@gmail.com";
+            string password = "------";
+            System.Net.NetworkCredential netCred = new System.Net.NetworkCredential(username, password);
 
-            email.PutExtra(Intent.ExtraEmail, new string[] { _enterEmailAddressButton.Text });
-            email.PutExtra(Intent.ExtraSubject, "Hello World Email");
-            email.PutExtra(Intent.ExtraText, emailBody.ToString());
+            // Set Up Email Parameters
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.To.Add(_enterEmailAddressButton.Text);
+            mailMessage.Subject = "Test Email Message";
+            mailMessage.From = new MailAddress("------@gmail.com");
+            mailMessage.Body = emailBody.ToString();
 
-            email.SetType("message/rfc822");
+            // Set Up SMTP Client
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = netCred;
+            smtpClient.Port = 465;
 
-            // Attempt to Open Email App to Send Email
+            // Attempt to Send Email
             try
             {
-                StartActivity(email);
+                smtpClient.Send(mailMessage);
             }
-            catch (Android.Content.ActivityNotFoundException ex)
+            catch (Exception ex)
             {
-                Toast.MakeText(this, "There are no email applications installed.", ToastLength.Short).Show();
+                Toast.MakeText(this, "Unable to Send Email " + ex, ToastLength.Short).Show();
             }
         }
 
