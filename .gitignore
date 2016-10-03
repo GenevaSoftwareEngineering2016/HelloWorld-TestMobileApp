@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/test-android-app/test-android-app/bin/Debug
+/test-android-app/test-android-app/obj/Debug

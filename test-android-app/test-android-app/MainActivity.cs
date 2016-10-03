@@ -1,13 +1,12 @@
 ﻿// CSC 483 - HelloWorld-TestMobileApp
 // With help (code) from: Sven-Michael Stübe @ http://stackoverflow.com/questions/39678310/add-email-body-text-and-send-email-from-xamarin-android-app/39681516#39681516
 using System;
-using System.Net.Mail;
 using Android.App;
-using Android.Content;
 using Android.Widget;
 using Android.OS;
 using System.Text;
-using Java.Interop;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace test_android_app
 {
@@ -22,7 +21,7 @@ namespace test_android_app
         private CheckBox _enableEmailCheckBox;
         private EditText _enterEmailAddressButton;
         private EditText _enterEmailTextButton;
-        private int ClickCount { get; set; } = 0;
+        private int ClickCount { get; set; }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -114,6 +113,7 @@ namespace test_android_app
         private void SendEmailButtonOnClick(object sender, EventArgs eventArgs)
         {
             // Following Code Adapted From Morten Godrim Jensen @ http://stackoverflow.com/questions/30255789/how-to-send-a-mail-in-xamarin-using-system-net-mail-smtpclient
+            // Following Code Adapted From https://github.com/jstedfast/MailKit
             // Build the Body of the Email
             var emailBody = new StringBuilder();
             emailBody.AppendLine("Hello from Xamarin.Android!");
@@ -121,33 +121,39 @@ namespace test_android_app
             emailBody.AppendLine();
             emailBody.Append(_enterEmailTextButton.Text);
 
-            // Set Credentials
-            string username = "------@gmail.com";
-            string password = "------";
-            System.Net.NetworkCredential netCred = new System.Net.NetworkCredential(username, password);
-
             // Set Up Email Parameters
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.To.Add(_enterEmailAddressButton.Text);
-            mailMessage.Subject = "Test Email Message";
-            mailMessage.From = new MailAddress("------@gmail.com");
-            mailMessage.Body = emailBody.ToString();
+            MimeMessage email = new MimeMessage();
+            email.From.Add(new MailboxAddress("Bird Counter App", "gc.seniorsoftwareproject@gmail.com"));
+            email.To.Add(new MailboxAddress("User", _enterEmailAddressButton.Text));
+            email.Subject = "Test Email Message";
+            email.Body = new TextPart("plain") {Text = emailBody.ToString()};
 
             // Set Up SMTP Client
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.EnableSsl = true;
-            smtpClient.Credentials = netCred;
-            smtpClient.Port = 465;
+            using (var client = new SmtpClient())
+            {
+                // Accept All SSL Certificates
+                client.ServerCertificateValidationCallback = (s,c,h,e) => true;
 
-            // Attempt to Send Email
-            try
-            {
-                smtpClient.Send(mailMessage);
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this, "Unable to Send Email " + ex, ToastLength.Short).Show();
+                // Connect to SMTP Server
+                client.Connect("smtp.gmail.com", 465, true);
+
+                // Not Using OAuth2 Token
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+
+                // SMTP Server Requires Authentication
+                client.Authenticate("gc.seniorsoftwareproject@gmail.com", "AppD3v3l0p3rs16");
+
+                // Attempt to Send Email
+                try
+                {
+                    // Send Email
+                    client.Send(email);
+                    client.Disconnect(true);
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, "Unable to Send Email " + ex, ToastLength.Short).Show();
+                }
             }
         }
 
