@@ -1,4 +1,0 @@
-test_android_app.MainActivity, test-android-app;md590a7519f437b4588e21ebde539ce8597.MainActivity
-test_android_app.MainActivity, test-android-app, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md590a7519f437b4588e21ebde539ce8597.MainActivity
-test_android_app.MainActivity;md590a7519f437b4588e21ebde539ce8597.MainActivity
-test_android_app.MainActivity;md590a7519f437b4588e21ebde539ce8597.MainActivity

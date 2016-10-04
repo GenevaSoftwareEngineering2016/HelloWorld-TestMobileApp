@@ -123,7 +123,7 @@ namespace test_android_app
 
             // Set Up Email Parameters
             MimeMessage email = new MimeMessage();
-            email.From.Add(new MailboxAddress("Bird Counter App", "gc.seniorsoftwareproject@gmail.com"));
+            email.From.Add(new MailboxAddress("Bird Counter App", "-----------@gmail.com"));
             email.To.Add(new MailboxAddress("User", _enterEmailAddressButton.Text));
             email.Subject = "Test Email Message";
             email.Body = new TextPart("plain") {Text = emailBody.ToString()};
@@ -131,17 +131,24 @@ namespace test_android_app
             // Set Up SMTP Client
             using (var client = new SmtpClient())
             {
-                // Accept All SSL Certificates
-                client.ServerCertificateValidationCallback = (s,c,h,e) => true;
+                try
+                {
+                    // Accept All SSL Certificates
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                // Connect to SMTP Server
-                client.Connect("smtp.gmail.com", 465, true);
+                    // Connect to SMTP Server
+                    client.Connect("smtp.gmail.com", 465, true);
 
-                // Not Using OAuth2 Token
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                    // Not Using OAuth2 Token
+                    client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                // SMTP Server Requires Authentication
-                client.Authenticate("gc.seniorsoftwareproject@gmail.com", "AppD3v3l0p3rs16");
+                    // SMTP Server Requires Authentication
+                    client.Authenticate("-----------@gmail.com", "-----------");
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, "Unable to connect to SMTP server. " + ex, ToastLength.Short).Show();
+                }
 
                 // Attempt to Send Email
                 try
@@ -149,10 +156,11 @@ namespace test_android_app
                     // Send Email
                     client.Send(email);
                     client.Disconnect(true);
+                    Toast.MakeText(this, "Email sent to " + _enterEmailAddressButton.Text, ToastLength.Short).Show();
                 }
                 catch (Exception ex)
                 {
-                    Toast.MakeText(this, "Unable to Send Email " + ex, ToastLength.Short).Show();
+                    Toast.MakeText(this, "Unable to send email. " + ex, ToastLength.Short).Show();
                 }
             }
         }

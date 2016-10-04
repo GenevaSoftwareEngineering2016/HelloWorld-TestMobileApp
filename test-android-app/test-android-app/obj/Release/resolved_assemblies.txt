@@ -1,9 +1,0 @@
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\test-android-app.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\Java.Interop.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\Mono.Android.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\mscorlib.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\System.Core.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\System.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\System.Xml.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\System.Runtime.Serialization.dll
-C:\Users\acald\Source\Repos\HelloWorld-TestMobileApp\test-android-app\test-android-app\obj\Release\android\assets\System.ServiceModel.Internals.dll
