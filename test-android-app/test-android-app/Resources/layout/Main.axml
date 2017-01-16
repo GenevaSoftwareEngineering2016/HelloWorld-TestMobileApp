@@ -27,37 +27,4 @@
         android:enabled="true"
         android:editable="false"
         android:clickable="true" />
-    <CheckBox
-        android:text="Enable Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBoxEnableEmail"
-        android:enabled="true"
-        android:editable="false"
-        android:clickable="true" />
-    <EditText
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editEmail"
-        android:text="[example@abc.com]"
-        android:clickable="true"
-        android:editable="true"
-        android:enabled="false" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/emailText"
-        android:editable="true"
-        android:enabled="false"
-        android:clickable="true"
-        android:text="[Enter Email Text Here]" />
-    <Button
-        android:text="Send Count &amp; Text Via Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sendEmailButton"
-        android:clickable="true"
-        android:editable="false"
-        android:enabled="false" />
 </LinearLayout>
