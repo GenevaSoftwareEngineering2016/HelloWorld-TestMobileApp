@@ -1,0 +1,9 @@
+environment:
+  keystore-password:
+    secure: xtww9k/DSZleAJl5BpmBMQ== # YourPassword for keystore
+before_build:
+  - nuget restore
+build_script:
+  - msbuild "/t:SignAndroidPackage" "/p:Configuration=Release" "/p:AndroidKeyStore=true" "/p:AndroidSigningKeyAlias=TestSigningKey" "/p:AndroidSigningKeyPass=%keystore-password%" "/p:AndroidSigningKeyStore=TestSigningKey" "/p:AndroidSigningStorePass=%keystore-password%"  "test-android-app\test-android-app.csproj"
+artifacts:
+  - path: test-android-app\bin\Release\com.HelloWorldTestMA-Signed.apk
