@@ -1,6 +1,6 @@
 environment:
   keystore-password:
-    secure: xtww9k/DSZleAJl5BpmBMQ== # Your Password for keystore
+    secure string: xtww9k/DSZleAJl5BpmBMQ== # Your Password for keystore
   # before_build:
    # - nuget restore
   build_script:
