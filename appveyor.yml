@@ -1,4 +1,4 @@
-venvironment:
+environment:
   keystore-password:
     secure: xtww9k/DSZleAJl5BpmBMQ== # Your Password for key AND keystore
 # before_build:
