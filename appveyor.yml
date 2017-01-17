@@ -9,7 +9,7 @@ artifacts:
   - path: test-android-app\test-android-app\bin\Release\GenevaCollege.HelloWorldTest.apk
 deploy:
   release: HelloWorldTest-v$(appveyor_build_version)
-  description: 'Test Release of App APK'
+  description: "Updated Release of App APK - v%appveyor_build_version%"
   provider: GitHub
   auth_token:
     secure: RPi7QAwKSuNzKpH1SqJHizmMqcD4YPAoPILlleg4wbRAFY8uNO34pG5XR2TFZIYP # your encrypted token from GitHub
