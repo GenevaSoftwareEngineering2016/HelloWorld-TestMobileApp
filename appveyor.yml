@@ -10,11 +10,13 @@ deploy:
   on:
     branch: master                 # release from master branch only
     appveyor_repo_tag: true        # deploy on tag push onlyenvironment:
+  key-password:
+    secure: xtww9k/DSZleAJl5BpmBMQ== # Your Password for key
   keystore-password:
-    secure: xtww9k/DSZleAJl5BpmBMQ== # YourPassword for keystore
+    secure: xtww9k/DSZleAJl5BpmBMQ== # Your Password for keystore
 # before_build:
  # - nuget restore
 build_script:
-  - msbuild "/t:SignAndroidPackage" "/p:Configuration=Release" "/p:AndroidKeyStore=true" "/p:AndroidSigningKeyAlias=TestSigningKey" "/p:AndroidSignPackageKeyPass=%keystore-password%" "/p:AndroidSigningKeyStore=TestSigningKey.keystore" "/p:AndroidSigningStorePass=%keystore-password%"  "test-android-app\test-android-app\test-android-app.csproj"
+  - msbuild "/t:SignAndroidPackage" "/p:Configuration=Release" "/p:AndroidKeyStore=true" "/p:AndroidSigningKeyAlias=TestSigningKey" "/p:AndroidSigningKeyPass=%key-password%" "/p:AndroidSigningKeyStore=TestSigningKey.keystore" "/p:AndroidSigningStorePass=%keystore-password%"  "test-android-app\test-android-app\test-android-app.csproj"
 artifacts:
   - path: test-android-app\bin\Release\com.HelloWorldTestMA-Signed.apk
