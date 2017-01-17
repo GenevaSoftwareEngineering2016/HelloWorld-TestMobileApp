@@ -15,6 +15,6 @@ deploy:
 # before_build:
  # - nuget restore
 build_script:
-  - msbuild "/t:SignAndroidPackage" "/p:Configuration=Release" "/p:AndroidKeyStore=true" "/p:AndroidSigningKeyAlias=TestSigningKey" "/p:AndroidSigningKeyPass=%keystore-password%" "/p:AndroidSigningKeyStore=TestSigningKey.keystore" "/p:AndroidSigningStorePass=%keystore-password%"  "test-android-app\test-android-app\test-android-app.csproj"
+  - msbuild "/t:SignAndroidPackage" "/p:Configuration=Release" "/p:AndroidKeyStore=true" "/p:AndroidSigningKeyAlias=TestSigningKey" "/p:AndroidSignPackageKeyPass=%keystore-password%" "/p:AndroidSigningKeyStore=TestSigningKey.keystore" "/p:AndroidSigningStorePass=%keystore-password%"  "test-android-app\test-android-app\test-android-app.csproj"
 artifacts:
   - path: test-android-app\bin\Release\com.HelloWorldTestMA-Signed.apk
