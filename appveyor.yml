@@ -6,14 +6,14 @@ environment:
 build_script:
   - msbuild "/t:SignAndroidPackage" "/p:Configuration=Release" "/p:AndroidKeyStore=true" "/p:AndroidSigningKeyAlias=TestSigningKey" "/p:AndroidSigningKeyPass=%keystore-password%" "/p:AndroidSigningKeyStore=TestSigningKey.keystore" "/p:AndroidSigningStorePass=%keystore-password%"  "test-android-app\test-android-app\test-android-app.csproj"
 artifacts:
-  - path: test-android-app\test-android-app\bin\Release\HelloWorldTest.HelloWorldTest.apk
+  - path: test-android-app\test-android-app\bin\Release\GenevaCollege.HelloWorldTest.apk
 deploy:
   release: HelloWorldTest-v$(appveyor_build_version)
   description: 'Test Release of App APK'
   provider: GitHub
   auth_token:
     secure: RPi7QAwKSuNzKpH1SqJHizmMqcD4YPAoPILlleg4wbRAFY8uNO34pG5XR2TFZIYP # your encrypted token from GitHub
-  artifact: test-android-app\test-android-app\bin\Release\HelloWorldTest.HelloWorldTest.apk            # upload all NuGet packages to release assets
+  artifact: test-android-app\test-android-app\bin\Release\GenevaCollege.HelloWorldTest.apk            # upload all NuGet packages to release assets
   draft: false
   prerelease: false
   force_update: true
